@@ -1,5 +1,7 @@
+const host = "http://localhost:8000" 
+
 export const getCategories = () => {
-    return fetch("http://localhost:8000/categories", {
+    return fetch(`${host}/categories`, {
         headers: {
             "Authorization" : `Token ${localStorage.getItem("gr_token")}`
         }
@@ -8,7 +10,7 @@ export const getCategories = () => {
 }
 
 export const getCategoryById = (id) => {
-    return fetch(`http://localhost:8000/categories/${id}`, {
+    return fetch(`${host}/categories/${id}`, {
         headers: {
             "Authorization" : `Token ${localStorage.getItem("gr_token")}`
         }
@@ -17,7 +19,7 @@ export const getCategoryById = (id) => {
 }
 
 export const createCategory = () => {
-    return fetch("http://localhost:8000/categories", {
+    return fetch(`${host}/categories`, {
         method: "POST",
         headers: {
             "Authorization" : `Token ${localStorage.getItem("gr_token")}`,
@@ -28,7 +30,7 @@ export const createCategory = () => {
 }
 
 export const deleteCategory = (id) => {
-    return fetch(`http://localhost:8000/categories/${id}`, {
+    return fetch(`${host}/categories/${id}`, {
         method: "DELETE",
         headers: {
             "Authorization" : `Token ${localStorage.getItem("gr_token")}`

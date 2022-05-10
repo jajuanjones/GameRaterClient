@@ -1,5 +1,7 @@
+const host = "http://localhost:8000"
+
 export const getGames = () => {
-    return fetch("http://localhost:8000/games", {
+    return fetch(`${host}/games`, {
         headers: {
             "Authorization" : `Token ${localStorage.getItem("gr_token")}`
         }
@@ -8,7 +10,7 @@ export const getGames = () => {
 }
 
 export const getGameById = (gameId) => {
-    return fetch(`http://localhost:8000/games/${gameId}`, {
+    return fetch(`${host}/games/${gameId}`, {
         headers: {
             "Authorization" : `Token ${localStorage.getItem("gr_token")}`
         }
@@ -17,7 +19,7 @@ export const getGameById = (gameId) => {
 }
 
 export const createGame = (game) => {
-    return fetch(`http://localhost:8000/games`, {
+    return fetch(`${host}/games`, {
         method: "POST",
         headers: {
             "Authorization" : `Token ${localStorage.getItem("gr_token")}`,
@@ -28,8 +30,20 @@ export const createGame = (game) => {
         .then(res=>res.json())
 }
 
+export const updateGame = (id) => {
+    return fetch(`${host}/games/${id}`, {
+        method: "PUT",
+        headers: {
+            "Authorization" : `Token ${localStorage.getItem("gr_token")}`,
+            "Content-Type": "application/json"
+        },
+        body: JSON.stringify(id)
+    })
+        .then(res=>res.json())
+}
+
 export const deleteGame = (id) => {
-    return fetch(`http://localhost:8000/games/${id}`, {
+    return fetch(`${host}/games/${id}`, {
         method: "DELETE",
         headers: {
             "Authorization" : `Token ${localStorage.getItem("gr_token")}`
