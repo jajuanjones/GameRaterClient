@@ -34,7 +34,7 @@ export const UpdateGameForm = () => {
 
     return (
         <form className="gameForm">
-            <h2 className="gameForm__title">Register New Game</h2>
+            <h2 className="gameForm__title">Update Game</h2>
             <fieldset>
                 <div className="form-group">
                     <label htmlFor="title">Title: </label>

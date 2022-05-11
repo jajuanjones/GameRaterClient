@@ -5,14 +5,12 @@ import { getReviews } from "../review/ReviewManager";
 import { getGameById } from "./GameManager";
 
 export const GameDetails = () => {
-    const [game, updateGame] = useState({categories:[]})
+    const [game, updateGame] = useState({categories:[], reviews:[ ]})
     const {gameId} = useParams()
     const history = useHistory()
-    const [reviews, updateReviews] = useState([])
 
     useEffect(()=> {
         getGameById(gameId).then(data=>updateGame(data))
-        getReviews().then(data=>updateReviews(data))
     },[])
 
     return (
@@ -31,7 +29,7 @@ export const GameDetails = () => {
                         <p>{game.time_to_play}</p>
                         <p>{game.age_recommendation}</p>
                         {game?.categories.map(category=> <p key="game_category">{category.label}</p>)}
-                        {game.reviews.map(review=> <Review review={review}/>)}
+                        {game?.reviews.map(review=> <Review review={review}/>)}
                     </div>
                 </div>
             </section>
