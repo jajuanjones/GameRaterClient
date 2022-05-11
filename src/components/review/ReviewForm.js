@@ -20,8 +20,8 @@ export const ReviewForm = () => {
     }
 
     return(
-        <form className="gameForm">
-            <h2 className="gameForm__title">Write a Review</h2>
+        <form className="reviewForm">
+            <h2 className="reviewForm__title">Write a Review</h2>
             <fieldset>
                 <div className="form-group">
                     <label htmlFor="review">Add your review: </label>

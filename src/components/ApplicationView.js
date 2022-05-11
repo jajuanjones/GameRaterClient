@@ -4,6 +4,7 @@ import { GameDetails } from "./game/GameDetails"
 import { GameForm } from "./game/GameForm"
 import { GamesList } from "./game/GamesList"
 import { UpdateGameForm } from "./game/UpdateGameForm"
+import { RatingForm } from "./rating/RatingForm"
 import { ReviewForm } from "./review/ReviewForm"
 
 
@@ -23,6 +24,9 @@ export const ApplicationView = () => {
         </Route>
         <Route exact path="/games/:gameId(\d+)/review">
             <ReviewForm/>
+        </Route>
+        <Route exact path="/games/:gameId(\d+)/rate">
+            <RatingForm/>
         </Route>
         </>
     
