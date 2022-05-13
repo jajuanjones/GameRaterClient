@@ -1,6 +1,6 @@
 import React, {useState, useEffect} from "react";
 import { useHistory } from "react-router-dom";
-import { getGames, searchGames } from "./GameManager";
+import { getGames, orderGames, searchGames } from "./GameManager";
 import { Link } from "react-router-dom"
 
 export const GamesList = () => {
@@ -21,6 +21,12 @@ export const GamesList = () => {
             <button className="game_list_button" onClick={()=>history.push("/games/new")}>Register New Game</button>
             {/* make sure our url has 'q' in it */}
             <input type="text" onChange={(evt)=>{updateSearch(evt.target.value)}}></input>
+            <select onChange={(evt)=>orderGames(evt.target.value).then(data=>updateGames(data))}>
+                <option value="0" >Sort ⇅</option>
+                <option value="year_released">Release Year</option>
+                <option value="time_to_play">Play Time</option>
+                <option value="designer">Designer</option>
+            </select>
             <div className="games_container">
                 <div className="games__elements">
                     {
