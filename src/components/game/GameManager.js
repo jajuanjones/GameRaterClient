@@ -63,3 +63,21 @@ export const createPictureForGame = (picture) => {
     })
         .then(res=>res.json())
 }
+
+export const searchGames = (search) => {
+    return fetch(`${host}/games?q=${search}`, {
+        headers: {
+            "Authorization" : `Token ${localStorage.getItem("gr_token")}`
+        }
+    })
+        .then(res=>res.json())
+}
+
+export const orderGames = (param) => {
+    return fetch(`${host}/games?orderby=${param}`, {
+        headers: {
+            "Authorization" : `Token ${localStorage.getItem("gr_token")}`
+        }
+    })
+        .then(res=>res.json())
+}

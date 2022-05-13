@@ -6,7 +6,7 @@ import { getGameById } from "./GameManager";
 import { Photo } from "./Photo";
 
 export const GameDetails = () => {
-    const [game, updateGame] = useState({categories:[], reviews:[ ]})
+    const [game, updateGame] = useState({categories:[], reviews:[], images:[]})
     const {gameId} = useParams()
     const history = useHistory()
 
@@ -31,11 +31,11 @@ export const GameDetails = () => {
                         <p>Player Count: {game.number_of_players}</p>
                         <p>Play Time: {game.time_to_play}</p>
                         <p>Age Recommendation: {game.age_recommendation}</p>
-                        <p>Categories(s):</p>
+                        <p>Category(s):</p>
                         {game?.categories.map(category=> <p key="game_category">{category.label}</p>)}
                         <p>Review(s):</p>
-                        {game?.reviews.map(review=> <Review review={review}/>)}
-                        <p>Ratings(s): {game.average_rating}</p>
+                        {game?.reviews.map(review=><Review review={review}/>)}
+                        <p>Rating: {game.average_rating}</p>
                         <p>Photo(s):</p>
                         {game?.images.map(image=><Photo image={image}/>)}
                     </div>

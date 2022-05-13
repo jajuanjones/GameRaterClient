@@ -1,19 +1,26 @@
 import React, {useState, useEffect} from "react";
 import { useHistory } from "react-router-dom";
-import { getGames } from "./GameManager";
+import { getGames, searchGames } from "./GameManager";
 import { Link } from "react-router-dom"
 
 export const GamesList = () => {
+    const [search_text, updateSearch] = useState("")
     const [games, updateGames] = useState([])
     const history = useHistory()
 
     useEffect(()=>{
-        getGames().then((data)=>updateGames(data))
-    },[])
+        if (search_text == "") {
+            getGames().then((data)=>updateGames(data))
+        } else {
+            searchGames(search_text).then(data=>updateGames(data))
+        }
+    },[search_text])
 
     return(
         <section className="games_section">
             <button className="game_list_button" onClick={()=>history.push("/games/new")}>Register New Game</button>
+            {/* make sure our url has 'q' in it */}
+            <input type="text" onChange={(evt)=>{updateSearch(evt.target.value)}}></input>
             <div className="games_container">
                 <div className="games__elements">
                     {
