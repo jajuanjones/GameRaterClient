@@ -3,6 +3,7 @@ import { useParams, useHistory } from "react-router-dom";
 import { Review } from "../review/Review";
 import { getReviews } from "../review/ReviewManager";
 import { getGameById } from "./GameManager";
+import { Photo } from "./Photo";
 
 export const GameDetails = () => {
     const [game, updateGame] = useState({categories:[], reviews:[ ]})
@@ -35,6 +36,8 @@ export const GameDetails = () => {
                         <p>Review(s):</p>
                         {game?.reviews.map(review=> <Review review={review}/>)}
                         <p>Ratings(s): {game.average_rating}</p>
+                        <p>Photo(s):</p>
+                        {game?.images.map(image=><Photo image={image}/>)}
                     </div>
                 </div>
                 <button className="game_list_button" onClick={()=>history.push(`/games/${gameId}/picture`)}>Add a Picture</button>

@@ -20,9 +20,9 @@ export const PictureForm = () => {
         getBase64(event.target.files[0], (base64ImageString) => {
             console.log("Base64 of file is", base64ImageString);
             // Update a component state variable to the value of base64ImageString
-            const newImage = Object.assign({}, currentGameImage)
-            newImage[event.target.name] = event.target.value
-            setCurrentGameImage(newImage)
+            let copy = {...currentGameImage}
+            copy.image = base64ImageString
+            setCurrentGameImage(copy)
         });
     }
 
