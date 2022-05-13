@@ -37,6 +37,7 @@ export const GameDetails = () => {
                         <p>Ratings(s): {game.average_rating}</p>
                     </div>
                 </div>
+                <button className="game_list_button" onClick={()=>history.push(`/games/${gameId}/picture`)}>Add a Picture</button>
             </section>
         </main>
     )

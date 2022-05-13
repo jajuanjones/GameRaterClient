@@ -51,3 +51,15 @@ export const deleteGame = (id) => {
     })
         .then(res=>res.json())
 }
+
+export const createPictureForGame = (picture) => {
+    return fetch(`${host}/photos`, {
+        method: "POST",
+        headers: {
+            "Authorization" : `Token ${localStorage.getItem("gr_token")}`,
+            "Content-Type": "application/json"
+        },
+        body: JSON.stringify(picture)
+    })
+        .then(res=>res.json())
+}
